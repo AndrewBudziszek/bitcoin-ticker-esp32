@@ -37,5 +37,4 @@ Whatever you need; questions answered, requests, bugs; make an Issue. I'll get t
 # Support Me
 Support me with some Bitcoin! - Wallet: 1NjSoJX4biGi5hW72NX7eLYvzMVgjChfRA
 
-Otherwise click on my affiliate links!
-
+Or buy me a coffee - Venmo - @AndrewBudziszek
