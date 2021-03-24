@@ -13,6 +13,10 @@ Bitcoin Ticker is Arduino code for ESP32 boards. This ticker displays the price 
 # Installation
 Connect your ESP32 board to your computer and open `bitcoinTicker.ino` with the Arduino IDE. 
 
+In `Tools > Board` select `DOIT ESP32 DEVKIT V1`.
+
+Select the correct port that your ESP32 is plugged into via `Tools > Port`. If your board isn't showing up, you might need to install some drivers. A Google Search for `ESP32 Drivers` should give you what you need.
+
 Hit the `Verify` button. Install any necessary libraries via `Tools > Manage Libraries`. Below is the list of libraries I used in this project. You should be able to find them pretty quick by typing these into the search bar. All libraries are found in the Arduino Library Manger(`Tools > Manage Libraries`.) No special installation is needed outside of their library.
 
 Libraries Used:
