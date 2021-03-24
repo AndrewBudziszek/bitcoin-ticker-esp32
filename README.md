@@ -8,7 +8,7 @@ Bitcoin Ticker is Arduino code for ESP32 boards. This ticker displays the price 
 * <a target="_blank" href="https://www.amazon.com/gp/product/B07Q576VWZ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07Q576VWZ&linkCode=as2&tag=sonbrooks-20&linkId=3a96c90ac45fbedce46412bc24f99fe7">MELIFE ESP32 ESP-32S Development Board</a>
 
 # Wiring Diagram
-![Wiring Diagram](Wire-Diagram-ESP32-BTCTracker.png)
+![Wiring Diagram](wire-diagram.png)
 
 # Installation
 Connect your ESP32 board to your computer and open `bitcoinTicker.ino` with the Arduino IDE. 
