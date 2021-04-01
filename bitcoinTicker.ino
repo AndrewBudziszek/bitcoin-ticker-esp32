@@ -2,7 +2,7 @@
 #include <WiFi.h>
 #include <Wire.h>
 #include <HTTPClient.h>
-#include <NTPClient.h>
+#include <NTPClient.h> 
 #include <WiFiUdp.h>
 #include "secrets.h" // WiFi Configuration (WiFi name and Password)
 #include <ArduinoJson.h>
@@ -17,8 +17,8 @@ const char* password = SECRET_WIFI_PASSWORD;
 
 const int httpsPort = 443;
 // Powered by CoinDesk - https://www.coindesk.com/price/bitcoin
-const String url = "https://api.coindesk.com/v1/bpi/currentprice/BTC.json";
-const String historyURL = "https://api.coindesk.com/v1/bpi/historical/close.json";
+const String url = "http://api.coindesk.com/v1/bpi/currentprice/BTC.json";
+const String historyURL = "http://api.coindesk.com/v1/bpi/historical/close.json";
 const String cryptoCode = "BTC";
 
 WiFiClient client;
