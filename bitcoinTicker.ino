@@ -4,6 +4,7 @@
 #include <HTTPClient.h>
 #include <NTPClient.h>
 #include <WiFiUdp.h>
+#include "secrets.h" // WiFi Configuration (WiFi name and Password)
 #include <ArduinoJson.h>
 #define SCREEN_WIDTH 128 // OLED display width, in pixels
 #define SCREEN_HEIGHT 64 // OLED display height, in pixels
@@ -11,8 +12,8 @@
 #define SCREEN_ADDRESS 0x3C ///< See datasheet for Address; 0x3D for 128x64, 0x3C for 128x32
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, OLED_RESET);
 
-const char* ssid = "<ENTER SSID/WIFI NAME HERE>";
-const char* password = "<ENTER WIFI PASSWORD HERE>";
+const char* ssid = SECRET_SSID;
+const char* password = SECRET_WIFI_PASSWORD;
 
 const int httpsPort = 443;
 // Powered by CoinDesk - https://www.coindesk.com/price/bitcoin
@@ -42,16 +43,15 @@ void setup() {
   display.println("Connecting to WiFi...");
   display.display();
 
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-
   WiFi.begin(ssid, password);
 
+  Serial.print("Connecting to WiFi...");
   while (WiFi.status() != WL_CONNECTED)
   {
     delay(500);
-    Serial.println("Connecting to WiFi...");
+    Serial.print(".");
   }
+  Serial.println();
 
   display.println("Connected to: ");
   display.print(ssid);
@@ -91,7 +91,7 @@ void loop() {
   int historyHttpCode = http.GET();
   DeserializationError historyError = deserializeJson(historyDoc, http.getString());
 
-  if(historyError) {
+  if (historyError) {
     Serial.print(F("deserializeJson(History) failed"));
     Serial.println(historyError.f_str());
     delay(2500);
@@ -100,9 +100,11 @@ void loop() {
 
   Serial.print("History HTTP Status Code: ");
   Serial.println(historyHttpCode);
-  double yesterdayPrice = historyDoc["bpi"]["2021-03-20"].as<double>();
-  bool isUp = BTCUSDPrice.toDouble() > yesterdayPrice;
-  double percentChange;
+  JsonObject bpi = historyDoc["bpi"].as<JsonObject>();
+  double yesterdayPrice;
+  for (JsonPair kv : bpi) {
+    yesterdayPrice = kv.value().as<double>();
+  }
 
   Serial.print("BTCUSD Price: ");
   Serial.println(BTCUSDPrice.toDouble());
@@ -110,7 +112,9 @@ void loop() {
   Serial.print("Yesterday's Price: ");
   Serial.println(yesterdayPrice);
 
-  if(isUp) {
+  bool isUp = BTCUSDPrice.toDouble() > yesterdayPrice;
+  double percentChange;
+  if (isUp) {
     percentChange = ((BTCUSDPrice.toDouble() - yesterdayPrice) / yesterdayPrice) * 100;
   } else {
     percentChange = ((yesterdayPrice - BTCUSDPrice.toDouble()) / yesterdayPrice) * 100;
@@ -119,29 +123,37 @@ void loop() {
   Serial.print("Percent Change: ");
   Serial.println(percentChange);
 
+  //Display Header
   display.clearDisplay();
-  display.setCursor(0, 0);
-  display.println("BTC/USD: $" + BTCUSDPrice);
-  display.setCursor(0, 10);
-  if (isUp) {
-    display.println("BTC is UP today!");
-  } else {
-    display.println("BTC is down today.");
-  }
+  display.setTextSize(1);
+  printCenter("BTC/USD", 0, 0);
 
-  display.setCursor(0, 20);
-  display.print("(");
-  if(!isUp) {
-    display.print("-");
+  //Display BTC Price
+  display.setTextSize(2);
+  printCenter("$" + BTCUSDPrice, 0, 25);
+
+  //Display 24hr. Percent Change
+  String dayChangeString = "24hr. Change: ";
+  if (isUp) {
+    percentChange = ((BTCUSDPrice.toDouble() - yesterdayPrice) / yesterdayPrice) * 100;
+  } else {
+    percentChange = ((yesterdayPrice - BTCUSDPrice.toDouble()) / yesterdayPrice) * 100;
+    dayChangeString = dayChangeString + "-";
   }
-  display.print(percentChange);
-  
-  display.print("%)");
-  display.setCursor(0, 40);
-  display.println("Last Updated: ");
-  display.print(lastUpdated);
+  display.setTextSize(1);
+  dayChangeString = dayChangeString + percentChange + "%";
+  printCenter(dayChangeString, 0, 55);
   display.display();
 
   http.end();
   delay(10000);
+}
+
+void printCenter(const String buf, int x, int y)
+{
+  int16_t x1, y1;
+  uint16_t w, h;
+  display.getTextBounds(buf, x, y, &x1, &y1, &w, &h); //calc width of new string
+  display.setCursor((x - w / 2) + (128 / 2), y);
+  display.print(buf);
 }
