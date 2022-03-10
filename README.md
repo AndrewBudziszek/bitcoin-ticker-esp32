@@ -42,6 +42,6 @@ Plug Micro-USB into the Arduino and everything should boot up successfully in le
 Whatever you need; questions answered, requests, bugs; make an Issue. I'll get to them as soon as I can.
 
 # Support Me
-Support me with some Bitcoin! - Wallet: 1NjSoJX4biGi5hW72NX7eLYvzMVgjChfRA
+Support me with some crypto on Coinbase! - @SonBrooks
 
-Or buy me a coffee - Venmo - @AndrewBudziszek
+Or buy me a coffee - https://www.buymeacoffee.com/SonBrooks
