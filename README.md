@@ -4,11 +4,9 @@ Please reach out to me if you'd like to use it commercially. I am willing to com
 
 Bitcoin Ticker is Arduino code for ESP32 boards. This ticker displays the price of Bitcoin/USD and idicates whether the crypto currency went up or down. The price data comes from the CoinMarketCap API.
 
-(FYI - there are affliliate links here to hardware you might need.)
-
 # Hardware
-* <a target="_blank" href="https://amzn.to/4cAlNrS">0.96 Inch OLED Module 12864 128x64 Yellow Blue SSD1306 Driver I2C IIC Serial Self-Luminous Display Board</a>
-* <a target="_blank" href="https://amzn.to/4lBQdht">MELIFE ESP32 ESP-32S Development Board</a>
+* <a target="_blank" href="https://amzn.to/4cAlNrS">0.96 Inch OLED I2C IIC Display Module</a>
+* <a target="_blank" href="https://amzn.to/4lBQdht">ESP32 Development Board</a>
 
 # Wiring Diagram
 ![Wiring Diagram](wire-diagram.png)
@@ -33,7 +31,7 @@ Libraries Used:
 
 Once everything is verified successfully, hit the `Upload` button. If your OLED is wired up correctly, you should see the screen displaying that it's connecting to your network, then it will show the ticker. 
 
-I am using the <a target="_blank" href="https://amzn.to/4cAlNrS">MELIFE ESP32 ESP-32S Development Board</a> from Amazon. 
+I am using this <a target="_blank" href="https://amzn.to/4cAlNrS"> ESP32 Development Board</a> from Amazon. 
 
 # Usage
 Plug Micro-USB into the Arduino and everything should boot up successfully in less than 10 seconds.
@@ -45,3 +43,5 @@ Whatever you need; questions answered, requests, bugs; make an Issue. I'll get t
 Support me with some crypto on Coinbase! - @SonBrooks
 
 Or buy me a coffee - https://www.buymeacoffee.com/SonBrooks
+
+(Using my links may help me earn commission)
