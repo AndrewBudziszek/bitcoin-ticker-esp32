@@ -7,8 +7,8 @@ Bitcoin Ticker is Arduino code for ESP32 boards. This ticker displays the price 
 (FYI - there are affliliate links here to hardware you might need.)
 
 # Hardware
-* <a target="_blank" href="https://www.amazon.com/gp/product/B08FD643VZ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B08FD643VZ&linkCode=as2&tag=sonbrooks-20&linkId=9faac9c05979ab5d1800f8007b87bc86">0.96 Inch OLED Module 12864 128x64 Yellow Blue SSD1306 Driver I2C IIC Serial Self-Luminous Display Board</a>
-* <a target="_blank" href="https://www.amazon.com/gp/product/B07Q576VWZ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07Q576VWZ&linkCode=as2&tag=sonbrooks-20&linkId=3a96c90ac45fbedce46412bc24f99fe7">MELIFE ESP32 ESP-32S Development Board</a>
+* <a target="_blank" href="https://amzn.to/4cAlNrS">0.96 Inch OLED Module 12864 128x64 Yellow Blue SSD1306 Driver I2C IIC Serial Self-Luminous Display Board</a>
+* <a target="_blank" href="https://amzn.to/4lBQdht">MELIFE ESP32 ESP-32S Development Board</a>
 
 # Wiring Diagram
 ![Wiring Diagram](wire-diagram.png)
@@ -33,7 +33,7 @@ Libraries Used:
 
 Once everything is verified successfully, hit the `Upload` button. If your OLED is wired up correctly, you should see the screen displaying that it's connecting to your network, then it will show the ticker. 
 
-I am using the <a target="_blank" href="https://www.amazon.com/gp/product/B07Q576VWZ/ref=as_li_tl?ie=UTF8&camp=1789&creative=9325&creativeASIN=B07Q576VWZ&linkCode=as2&tag=sonbrooks-20&linkId=3a96c90ac45fbedce46412bc24f99fe7">MELIFE ESP32 ESP-32S Development Board</a> from Amazon. They're usually priced around $15 for two boards.
+I am using the <a target="_blank" href="https://amzn.to/4cAlNrS">MELIFE ESP32 ESP-32S Development Board</a> from Amazon. 
 
 # Usage
 Plug Micro-USB into the Arduino and everything should boot up successfully in less than 10 seconds.
